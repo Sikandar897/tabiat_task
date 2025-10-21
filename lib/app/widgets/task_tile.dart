@@ -46,8 +46,8 @@ class TaskTile extends StatelessWidget {
               textConfirm: 'Delete',
               confirmTextColor: Colors.white,
               onConfirm: () {
-                controller.removeTask(task.id);
                 Get.back();
+                controller.removeTask(task.id);   
               },
             );
           },

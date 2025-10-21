@@ -28,16 +28,21 @@ class TaskInputField extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 12),
-        Obx(() {
-          final enabled = controller.inputController.text.trim().isNotEmpty;
-          return ElevatedButton(
-            onPressed: enabled ? controller.addTask : null,
-            child: const Padding(
-              padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
-              child: Text('Add'),
-            ),
-          );
-        }),
+       Obx(() {
+  final enabled = controller.isInputNotEmpty.value;
+  return ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: enabled ? Colors.blueGrey : Colors.grey,
+      foregroundColor: enabled ? Colors.white : Colors.black38,
+    ),
+    onPressed: enabled ? controller.addTask : null,
+    child: const Padding(
+      padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
+      child: Text('Add'),
+    ),
+  );
+}),
+
       ],
     );
   }

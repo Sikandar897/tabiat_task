@@ -4,13 +4,13 @@ class TaskController extends GetxController {
   final RxList<TaskModel> tasks = <TaskModel>[].obs;
   final TextEditingController inputController = TextEditingController();
   final _uuid = const Uuid();
-  RxBool get isInputNotEmpty => (inputController.text.trim().isNotEmpty).obs;
+  final RxBool isInputNotEmpty = false.obs;
 
   @override
   void onInit() {
     super.onInit();
     inputController.addListener(() {
-      update();
+      isInputNotEmpty.value = inputController.text.trim().isNotEmpty;
     });
   }
 
